@@ -1,0 +1,24 @@
+/**
+@mainpage Dokumentacja zadania wielomiany
+
+### Treść zadania
+
+Uwaga: aktualna treść zadania znajduje się w [Moodle](https://moodle.mimuw.edu.pl).
+
+### Opis programu
+
+Tegoroczne duże zadanie polega na zaimplementowaniu operacji na wielomianach
+rzadkich wielu zmiennych.
+
+Program składa się z biblioteki operacji na wielomianach wielu zmiennych, 
+z interfejsem w pliku @p poly.h , oraz kalkulatora czytającego operacje ze 
+standardowego wejścia i wykonującego operacje, zaimplementowanego w @p calc.c .
+
+Moduły @p poly_stack i @p poly_parser zawierają pomocnicze funkcje dla 
+kalkulatora, odpowiednio obsługujące stos wielomianów i wykonujące na nim 
+operacje, oraz parsujące wielomiany i komendy ze standardowego wejścia.
+
+Program pozwala na utworzenie pliku wykonywalnego @p poly_test testującego 
+działanie biblioteki @p poly , przez wykonanie polecenia @p make @p test.
+
+*/
