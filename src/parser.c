@@ -10,7 +10,7 @@
 #include <ctype.h>
 #include <limits.h>
 
-#include "poly_parser.h"
+#include "parser.h"
 
 /**
  * Sprawdza poprawną alokację pamięci.
