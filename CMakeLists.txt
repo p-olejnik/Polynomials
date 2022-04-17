@@ -6,40 +6,29 @@ if (NOT CMAKE_BUILD_TYPE)
     set(CMAKE_BUILD_TYPE "Release")
 endif ()
 
-# Nie chcemy oglądać komunikatów o procentowym postępie kompilacji.
 set_property(GLOBAL PROPERTY RULE_MESSAGES OFF)
-
-# Chcemy zobaczyć polecenia wywołane przez make.
 set(CMAKE_VERBOSE_MAKEFILE ON)
 
-# Ustawiamy wspólne opcje kompilowania dla wszystkich wariantów projektu.
 set(CMAKE_C_FLAGS "-std=c11 -Wall -Wextra")
-# Domyślne opcje dla wariantów Release i Debug są sensowne.
-# Jeśli to konieczne, ustawiamy tu inne.
 # set(CMAKE_C_FLAGS_RELEASE "-O3 -DNDEBUG")
 # set(CMAKE_C_FLAGS_DEBUG "-g")
 
-# Wskazujemy pliki źródłowe.
 set(SOURCE_FILES
     src/calc.c
     src/poly.c
     src/poly.h
-    src/poly_stack.c 
-    src/poly_stack.h
-    src/poly_parser.c
-    src/poly_parser.h
+    src/stack.c 
+    src/stack.h
+    src/parser.c
+    src/parser.h
 )
 
-# Wskazujemy plik wykonywalny.
 add_executable(poly ${SOURCE_FILES})
 
-# Dodajemy obsługę Doxygena: sprawdzamy, czy jest zainstalowany i jeśli tak to:
 find_package(Doxygen)
 if (DOXYGEN_FOUND)
-    # Wskazujemy lokalizacją pliku konfiguracyjnego i podajemy jego docelową lokalizację w folderze, gdzie następuje kompilacja.
     configure_file(${CMAKE_CURRENT_SOURCE_DIR}/Doxyfile.in ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile @ONLY)
-    # Dodajemy cel doc: użycie make doc spowoduje wywołanie doxygena z odpowiednim plikiem konfiguracyjnym w folderze kompilacji.
-    # Na wyjście zostanie wypisany odpowiedni komentarz.
+
     add_custom_target(doc
         ${DOXYGEN_EXECUTABLE} ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile
         WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
@@ -47,17 +36,15 @@ if (DOXYGEN_FOUND)
     )
 endif (DOXYGEN_FOUND)
 
-# Wskazujemy pliki źródłowe dla testów biblioteki.
 set(TEST_SOURCE_FILES
     src/poly.c
     src/poly.h
-    src/poly_stack.c 
-    src/poly_stack.h
-    src/poly_parser.c
-    src/poly_parser.h
-    src/poly_test.c
+    src/stack.c 
+    src/stack.h
+    src/parser.c
+    src/parser.h
+    src/test.c
 )
 
-# Wskazujemy plik wykonywalny testów biblioteki.
 add_executable(test EXCLUDE_FROM_ALL ${TEST_SOURCE_FILES})
 set_target_properties(test PROPERTIES OUTPUT_NAME poly_test)
