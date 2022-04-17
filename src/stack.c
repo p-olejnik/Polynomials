@@ -8,7 +8,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-#include "poly_stack.h"
+#include "stack.h"
 #include "poly.h"
 
 /**
