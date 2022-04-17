@@ -15,8 +15,8 @@
 #include <errno.h>
 
 #include "poly.h"
-#include "poly_stack.h"
-#include "poly_parser.h"
+#include "stack.h"
+#include "parser.h"
 
 /**
  * Wypisuje na standardowe wyjście błędów komunikat, że na stosie jest za mało
