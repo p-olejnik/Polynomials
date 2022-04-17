@@ -43,7 +43,7 @@ set(TEST_SOURCE_FILES
     src/stack.h
     src/parser.c
     src/parser.h
-    src/test.c
+    src/poly_test.c
 )
 
 add_executable(test EXCLUDE_FROM_ALL ${TEST_SOURCE_FILES})
